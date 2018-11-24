@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Crypto Post-It</string>
+    <string name="basic_category_title">Basic</string>
+    <string name="cryptography_algorithm_category_title">Cryptography algorithm</string>
+    <string name="bezout_item_title">Bézout identity</string>
+    <string name="discret_log_item_title">Discret logarithm</string>
 </resources>
