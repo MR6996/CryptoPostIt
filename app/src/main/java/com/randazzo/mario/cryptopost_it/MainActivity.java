@@ -11,12 +11,30 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * TAG used on saving instance state of activity.
+     */
     private static final String LAST_ID_TAG = "last_id_tag";
 
+
+    /**
+     * A reference to the {@link DrawerLayout}
+     */
     private DrawerLayout mDrawerLayout;
+
+    /**
+     * A reference to the {@link FragmentManager} of the activity.
+     */
     private FragmentManager mFragmentManager;
+
+    /**
+     * The last {@link MenuItem} id selected.
+     */
     private Integer mLastItemId = R.id.bezout;
 
+    /**
+     * The listener for item selection, used in the {@link NavigationView}
+     */
     private NavigationView.OnNavigationItemSelectedListener mSelectionListener = new NavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -47,6 +65,11 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
+        /**
+         * Replace the current fragment with the fragment f.
+         *
+         * @param f a fragment to replace.
+         */
         private void changeFragment(Fragment f) {
             mFragmentManager
                     .beginTransaction()
