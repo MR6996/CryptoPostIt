@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Crypto Post-It</string>
+    <string name="basic_category_title">Tool di base</string>
+    <string name="bezout_item_title">Identità di Bézout</string>
+    <string name="discrete_log_item_title">Logaritmo discreto</string>
+    <string name="settings_view">Impostazioni</string>
+    <string name="cryptography_algorithm_category_title">Crittografia</string>
+    <string name="about_view">Info</string>
+
+</resources>
