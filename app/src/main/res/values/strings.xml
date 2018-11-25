@@ -4,6 +4,8 @@
     <string name="cryptography_algorithm_category_title">Cryptography algorithm</string>
     <string name="bezout_item_title">Bézout identity</string>
     <string name="discrete_log_item_title">Discrete logarithm</string>
+    <string name="settings_view">Settings</string>
+    <string name="about_view">About</string>
 
 
 </resources>
