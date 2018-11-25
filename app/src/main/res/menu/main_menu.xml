@@ -1,30 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
-        <item android:title="@string/basic_category_title">
-            <menu>
+    <item
+        android:id="@+id/basic_category"
+        android:title="@string/basic_category_title">
+        <menu>
+            <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/bezout"
                     android:title="@string/bezout_item_title" />
 
                 <item
-                    android:id="@+id/discret_log"
-                    android:title="@string/discret_log_item_title" />
-            </menu>
-        </item>
+                    android:id="@+id/discrete_log"
+                    android:title="@string/discrete_log_item_title" />
+            </group>
+        </menu>
+    </item>
 
-        <item android:title="@string/cryptography_algorithm_category_title">
-            <menu>
+    <item
+        android:id="@+id/cryptography_category"
+        android:title="@string/cryptography_algorithm_category_title">
+        <menu>
+            <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/rsa"
                     android:title="RSA" />
                 <item
                     android:id="@+id/el-gamal"
                     android:title="ElGamal" />
-            </menu>
-        </item>
-
-    </group>
+            </group>
+        </menu>
+    </item>
 
 </menu>
