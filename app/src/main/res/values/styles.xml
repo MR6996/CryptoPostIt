@@ -15,4 +15,14 @@
         <item name="android:drawablePadding">9dp</item>
     </style>
 
+    <style name="CustomEditText">
+        <item name="android:padding">6dp</item>
+        <item name="android:layout_margin">6dp</item>
+        <item name="android:inputType">number</item>
+    </style>
+
+    <style name="CustomButton">
+        <item name="android:layout_margin">12dp</item>
+    </style>
+
 </resources>

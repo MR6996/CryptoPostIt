@@ -1,13 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BezoutFragment">
 
-    <TextView
+    <io.github.kexanie.library.MathView
+        android:id="@+id/description_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Bezout" />
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        app:engine="MathJax"
+        app:text="@string/bezout_description" />
 
+
+    <EditText
+        android:id="@+id/a_edit_text"
+        style="@style/CustomEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/description_view"
+        android:hint="@string/a_edit_text" />
+
+    <EditText
+        android:id="@+id/b_edit_text"
+        style="@style/CustomEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/a_edit_text"
+        android:hint="@string/b_edit_text" />
+
+    <Button
+        android:id="@+id/calculate_button"
+        style="@style/CustomButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/b_edit_text"
+        android:text="@string/calculate_button" />
+
+    <io.github.kexanie.library.MathView
+        android:id="@+id/bezout_result_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/calculate_button"
+        android:layout_margin="15dp"
+        app:engine="MathJax" />
 </RelativeLayout>
