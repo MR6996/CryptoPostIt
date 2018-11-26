@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Crypto Post-It</string>
     <string name="basic_category_title">Tool di base</string>
     <string name="bezout_item_title">Identità di Bézout</string>
     <string name="discrete_log_item_title">Logaritmo discreto</string>
     <string name="settings_view">Impostazioni</string>
     <string name="cryptography_algorithm_category_title">Crittografia</string>
     <string name="about_view">Info</string>
+    <string name="bezout_description">Dati due interi \\(a\\neq 0\\) e \\(b\\neq 0\\), trova gli interi \\(x\\) e \\(y\\), tale che $$ MCD(a, b) = a\\cdot x + b\\cdot y$$</string>
+    <string name="calculate_button">Calcola</string>
+    <string name="a_edit_text">Inserisci l\'intero a</string>
+    <string name="b_edit_text">Inserisci l\'intero b</string>
+    <string name="bezout_result">\\(x = %s\\) e \\(y = %s\\)</string>
+    <string name="error_dialog_title">Errore</string>
+    <string name="empty_edit_text">Alcuni campi di testo sono vuoti!</string>
+    <string name="null_bezout_parameter">Gli interi devono essere non nulli.</string>
 </resources>
