@@ -6,7 +6,10 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
      * The last {@link MenuItem} id selected.
      */
     private Integer mLastItemId = R.id.bezout;
+
+    private Toolbar mAppToolbar;
 
     /**
      * The listener for item selection, used in the {@link NavigationView}
@@ -61,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
             item.setChecked(true);
             mDrawerLayout.closeDrawers();
+            mAppToolbar.setTitle(item.getTitle());
             mLastItemId = item.getItemId();
             return true;
         }
@@ -86,6 +92,13 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout = findViewById(R.id.menu_drawer);
         mFragmentManager = getSupportFragmentManager();
 
+        mAppToolbar = findViewById(R.id.app_toolbar);
+        mAppToolbar.setTitle("");
+        setSupportActionBar(mAppToolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
+
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(mSelectionListener);
 
@@ -102,4 +115,15 @@ public class MainActivity extends AppCompatActivity {
         outState.putInt(LAST_ID_TAG, mLastItemId);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(Gravity.START);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }
