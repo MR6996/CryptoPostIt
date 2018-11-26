@@ -1,6 +1,7 @@
 package com.randazzo.mario.cryptopost_it;
 
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,10 +10,12 @@ import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
 import java.math.BigInteger;
+import java.util.Objects;
 
 import cryptography.Utils;
 import io.github.kexanie.library.MathView;
@@ -40,6 +43,12 @@ public class BezoutFragment extends Fragment {
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                InputMethodManager imm = (InputMethodManager)
+                        Objects.requireNonNull(getActivity())
+                                .getSystemService(Activity.INPUT_METHOD_SERVICE);
+                if (imm != null)
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+
                 Editable aText = mAEditText.getText();
                 Editable bText = mBEditText.getText();
 
