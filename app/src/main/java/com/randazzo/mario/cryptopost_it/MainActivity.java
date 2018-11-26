@@ -1,5 +1,6 @@
 package com.randazzo.mario.cryptopost_it;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -7,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
@@ -21,12 +23,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
-     * A reference to the {@link DrawerLayout}
+     * Reference to the {@link DrawerLayout}
      */
     private DrawerLayout mDrawerLayout;
 
     /**
-     * A reference to the {@link FragmentManager} of the activity.
+     * Reference to the {@link FragmentManager} of the activity.
      */
     private FragmentManager mFragmentManager;
 
@@ -35,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
      */
     private Integer mLastItemId = R.id.bezout;
 
+    /**
+     * Reference to app {@link Toolbar}
+     */
     private Toolbar mAppToolbar;
 
     /**
@@ -125,5 +130,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    protected void showErrorDialog(String message) {
+        new AlertDialog.Builder(this)
+                .setTitle(getString(R.string.error_dialog_title))
+                .setMessage(message)
+                .setPositiveButton(getString(R.string.error_dialog_ok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .setCancelable(false)
+                .show();
     }
 }

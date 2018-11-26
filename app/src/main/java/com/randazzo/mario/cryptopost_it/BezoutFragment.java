@@ -2,10 +2,10 @@ package com.randazzo.mario.cryptopost_it;
 
 
 import android.app.Activity;
-import android.content.DialogInterface;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,12 +26,12 @@ public class BezoutFragment extends Fragment {
     private MathView mResultView;
     private EditText mAEditText;
     private EditText mBEditText;
+    private MainActivity activity;
 
-    public BezoutFragment() {
-    }
+    public BezoutFragment() { }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View mainView = inflater.inflate(R.layout.fragment_bezout, container, false);
 
@@ -53,7 +53,7 @@ public class BezoutFragment extends Fragment {
                 Editable bText = mBEditText.getText();
 
                 if (aText.length() == 0 || bText.length() == 0) {
-                    showErrorDialog(getString(R.string.empty_edit_text));
+                    activity.showErrorDialog(getString(R.string.empty_edit_text));
                     return;
                 }
 
@@ -61,7 +61,7 @@ public class BezoutFragment extends Fragment {
                 BigInteger b = new BigInteger(bText.toString());
 
                 if (a.equals(BigInteger.ZERO) || b.equals(BigInteger.ZERO)) {
-                    showErrorDialog(getString(R.string.null_bezout_parameter));
+                    activity.showErrorDialog(getString(R.string.null_bezout_parameter));
                     return;
                 }
 
@@ -75,18 +75,11 @@ public class BezoutFragment extends Fragment {
         return mainView;
     }
 
-    private void showErrorDialog(String message) {
-        new AlertDialog.Builder(getContext())
-                .setTitle(getString(R.string.error_dialog_title))
-                .setMessage(message)
-                .setPositiveButton(getString(R.string.error_dialog_ok), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .setCancelable(false)
-                .show();
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if(context instanceof MainActivity)
+            this.activity = (MainActivity)context;
+        else throw new IllegalStateException("Fragment is not managed by MainActivity!");
     }
-
 }
