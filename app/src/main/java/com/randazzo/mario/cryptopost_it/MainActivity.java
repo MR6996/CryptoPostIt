@@ -1,5 +1,6 @@
 package com.randazzo.mario.cryptopost_it;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
 
     /**
-     * Reference to the {@link FragmentManager} of the activity.
+     * Reference to the {@link FragmentManager} of activity.
      */
     private FragmentManager mFragmentManager;
 
@@ -43,6 +46,32 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar mAppToolbar;
 
     /**
+     * Reference to the {@link InputMethodManager} of activity.
+     */
+    private InputMethodManager mInputMethodManager;
+
+    /**
+     * {@link BezoutFragment} for calculate Bezout ideinty.
+     */
+    private BezoutFragment mBezoutFragment = new BezoutFragment();
+
+    /**
+     * {@link DiscreteLogFragment} for calculate discrete logarithm
+     * of {@link cryptography.Number} or {@link cryptography.Point}.
+     */
+    private DiscreteLogFragment mDiscreteLogFragment = new DiscreteLogFragment();
+
+    /**
+     * {@link RSAFragment}
+     */
+    private RSAFragment mRSAFragment = new RSAFragment();
+
+    /**
+     * {@link ElGamalFragment}
+     */
+    private ElGamalFragment mElGamalFragment = new ElGamalFragment();
+
+    /**
      * The listener for item selection, used in the {@link NavigationView}
      */
     private NavigationView.OnNavigationItemSelectedListener mSelectionListener = new NavigationView.OnNavigationItemSelectedListener() {
@@ -50,19 +79,19 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.bezout:
-                    changeFragment(new BezoutFragment());
+                    changeFragment(mBezoutFragment);
                     break;
 
                 case R.id.discrete_log:
-                    changeFragment(new DicreteLogFragment());
+                    changeFragment(mDiscreteLogFragment);
                     break;
 
                 case R.id.rsa:
-                    changeFragment(new RSAFragment());
+                    changeFragment(mRSAFragment);
                     break;
 
                 case R.id.el_gamal:
-                    changeFragment(new ElGamalFragment());
+                    changeFragment(mElGamalFragment);
                     break;
 
                 default:
@@ -89,6 +118,31 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * The listener for event on drawer, used for {@link DrawerLayout}.
+     */
+    private DrawerLayout.DrawerListener mDrawerListener = new DrawerLayout.DrawerListener() {
+        @Override
+        public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+
+        }
+
+        @Override
+        public void onDrawerOpened(@NonNull View drawerView) {
+            hideSoftInput();
+        }
+
+        @Override
+        public void onDrawerClosed(@NonNull View drawerView) {
+
+        }
+
+        @Override
+        public void onDrawerStateChanged(int newState) {
+
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
         mDrawerLayout = findViewById(R.id.menu_drawer);
         mFragmentManager = getSupportFragmentManager();
+        mInputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
 
         mAppToolbar = findViewById(R.id.app_toolbar);
         mAppToolbar.setTitle("");
@@ -106,6 +161,8 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(mSelectionListener);
+
+        mDrawerLayout.addDrawerListener(mDrawerListener);
 
         if (savedInstanceState != null)
             mLastItemId = savedInstanceState.getInt(LAST_ID_TAG);
@@ -126,6 +183,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 mDrawerLayout.openDrawer(Gravity.START);
+                hideSoftInput();
                 return true;
         }
 
@@ -144,5 +202,12 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .setCancelable(false)
                 .show();
+    }
+
+    protected void hideSoftInput() {
+        View focusView = getCurrentFocus();
+        if (mInputMethodManager != null && focusView != null)
+            mInputMethodManager.hideSoftInputFromWindow(focusView.getWindowToken(), 0);
+
     }
 }
