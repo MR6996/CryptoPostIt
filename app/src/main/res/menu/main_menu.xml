@@ -32,4 +32,16 @@
         </menu>
     </item>
 
+    <group>
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_settings_white"
+            android:title="@string/settings_view" />
+
+        <item
+            android:id="@+id/about"
+            android:icon="@drawable/ic_info_white"
+            android:title="@string/about_view" />
+    </group>
+
 </menu>
