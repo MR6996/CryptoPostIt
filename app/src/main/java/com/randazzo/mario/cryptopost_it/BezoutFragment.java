@@ -14,7 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.math.BigInteger;
+import java.util.List;
 
+import cryptography.BezoutStep;
 import cryptography.Utils;
 import io.github.kexanie.library.MathView;
 
@@ -65,9 +67,35 @@ public class BezoutFragment extends Fragment {
                     return;
                 }
 
-                BigInteger[] results = Utils.Bezout(a, b);
-                String resultText = String.format(getString(R.string.bezout_result),
-                        results[0].toString(), results[1].toString());
+                List<BezoutStep> steps = Utils.bezoutSteps(a, b);
+                BezoutStep lastStep = steps.get(steps.size() - 1);
+
+                StringBuilder resultBuilder = new StringBuilder(getString(R.string.bezout_result_label));
+                resultBuilder.append(String.format(
+                        getString(R.string.bezout_result),
+                        lastStep.getT(), lastStep.getS(), lastStep.getR()
+                ));
+
+                resultBuilder.append(getString(R.string.bezout_step_label));
+                for (int i = 0; i < steps.size(); i++) {
+                    BezoutStep s = steps.get(i);
+                    if (s.isInitialStep())
+                        resultBuilder.append(String.format(
+                                getString(R.string.bezout_initial_step),
+                                i, s.getR(), i, s.getS(), i, s.getT()
+                        ));
+                    else
+                        //r_%d = r_%d - %s \\cdot r_%d = %s
+                        resultBuilder.append(String.format(
+                                getString(R.string.bezout_step),
+                                i, i - 2, s.getQ(), i - 1, s.getR(),
+                                i, i - 2, s.getQ(), i - 1, s.getS(),
+                                i, i - 2, s.getQ(), i - 1, s.getT()
+                        ));
+
+                }
+
+                String resultText = resultBuilder.toString();
                 mResultView.setText(resultText);
             }
         });

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false"
+    android:orientation="horizontal"
     tools:context=".BezoutFragment">
 
     <ScrollView
@@ -21,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                app:engine="MathJax"
+                app:engine="KaTeX"
                 app:text="@string/bezout_description" />
 
 
@@ -57,17 +58,12 @@
         </RelativeLayout>
     </ScrollView>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
 
-        <io.github.kexanie.library.MathView
-            android:id="@+id/bezout_result_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            app:engine="MathJax" />
-    </ScrollView>
+    <io.github.kexanie.library.MathView
+        android:id="@+id/bezout_result_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        app:engine="KaTeX" />
 
 </LinearLayout>
