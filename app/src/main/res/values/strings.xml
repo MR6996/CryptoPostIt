@@ -33,6 +33,6 @@
     <string name="dl_p_hint">Insert integer p</string>
     <string name="dl_alpha_hint">Insert alpha</string>
     <string name="dl_gamma_hint">Insert gamma</string>
-    <string name="dl_not_prime_integer">The inserted integer is not prime!</string>
+    <string name="dl_not_prime_integer">The inserted integer p is not prime!</string>
 
 </resources>

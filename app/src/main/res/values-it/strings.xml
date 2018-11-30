@@ -1,16 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Main Drawer title -->
     <string name="basic_category_title">Tool di base</string>
     <string name="bezout_item_title">Identità di Bézout</string>
     <string name="discrete_log_item_title">Logaritmo discreto</string>
     <string name="settings_view">Impostazioni</string>
     <string name="cryptography_algorithm_category_title">Crittografia</string>
     <string name="about_view">Info</string>
+
+    <!-- Introduction text for single fragment -->
     <string name="bezout_description">Dati due interi \\(a\\neq 0\\) e \\(b\\neq 0\\), trova gli interi \\(x\\) e \\(y\\), tale che $$ MCD(a, b) = a\\cdot x + b\\cdot y$$</string>
-    <string name="calculate_button">Calcola</string>
+    <string name="dl_introduction">Given \\(\\alpha, \\gamma \\in G\\), find \\(a\\) such that: $$\\alpha = \\gamma^{a}$$</string>
+
+    <!-- Common application string resources -->
+    <string name="error_dialog_title">Error</string>
+    <string name="empty_edit_text">Some text field are void!</string>
+    <string name="calculate_button">Calculate</string>
+
+    <!-- Bezout fragment string resources -->
     <string name="bezout_a_edit_text">Inserisci l\'intero a</string>
     <string name="bezout_b_edit_text">Inserisci l\'intero b</string>
-    <string name="error_dialog_title">Errore</string>
-    <string name="empty_edit_text">Alcuni campi di testo sono vuoti!</string>
-    <string name="null_bezout_parameter">Gli interi devono essere non nulli.</string>
+    <string name="bezout_result">$$x = %s, y = %s$$ $$ MCD(a,b)=%s$$</string>
+    <string name="null_bezout_parameter">Gli interi inseriti non devono essere nulli.</string>
+    <string name="bezout_result_label">Risultato: </string>
+    <string name="bezout_step_label">Passi: </string>
+
+    <!-- Discrete logarithm fragment string resources -->
+    <string name="dl_p_hint">Inserisci l\'intero p</string>
+    <string name="dl_alpha_hint">Inserisci alfa</string>
+    <string name="dl_gamma_hint">Inserisci gamma</string>
+    <string name="dl_not_prime_integer">L\'intero p inserito non è primo.</string>
 </resources>
