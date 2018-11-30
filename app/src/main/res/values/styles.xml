@@ -8,21 +8,17 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="FooterView">
-        <item name="android:padding">12dp</item>
-        <item name="android:textColor">@color/colorOnPrimary</item>
-        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Menu</item>
-        <item name="android:drawablePadding">9dp</item>
-    </style>
-
     <style name="CustomEditText">
         <item name="android:padding">6dp</item>
         <item name="android:layout_margin">6dp</item>
         <item name="android:inputType">numberSigned</item>
+        <item name="android:background">@drawable/edit_text</item>
     </style>
 
     <style name="CustomButton">
         <item name="android:layout_margin">12dp</item>
+        <item name="android:background">@drawable/button</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
     </style>
 
 </resources>

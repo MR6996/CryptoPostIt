@@ -1,22 +1,38 @@
 <resources>
     <string name="app_name">Crypto Post-It</string>
+
+    <!-- Main Drawer title -->
     <string name="basic_category_title">Basic</string>
     <string name="cryptography_algorithm_category_title">Cryptography algorithm</string>
     <string name="bezout_item_title">Bézout identity</string>
     <string name="discrete_log_item_title">Discrete logarithm</string>
     <string name="settings_view">Settings</string>
     <string name="about_view">About</string>
+
+    <!-- Introduction text for single fragment -->
     <string name="bezout_description">Given two integers \\(a\\neq 0\\) and \\(b\\neq 0\\), finds integers \\(x\\) and \\(y\\), such that $$ gcd(a, b) = a\\cdot x + b\\cdot y$$</string>
-    <string name="calculate_button">Calculate</string>
-    <string name="a_edit_text">Insert integer a</string>
-    <string name="b_edit_text">Insert integer b</string>
-    <string name="bezout_result">$$x = %s, y = %s$$ $$ gcd(a,b)=%s$$</string>
+    <string name="dl_introduction">Given \\(\\alpha, \\gamma \\in G\\), find \\(a\\) such that: $$\\alpha = \\gamma^{a}$$</string>
+
+    <!-- Common application string resources -->
     <string name="error_dialog_title">Error</string>
     <string name="error_dialog_ok">OK</string>
     <string name="empty_edit_text">Some text field are void!</string>
+    <string name="calculate_button">Calculate</string>
+
+    <!-- Bezout fragment string resources -->
+    <string name="a_edit_text">Insert integer a</string>
+    <string name="b_edit_text">Insert integer b</string>
+    <string name="bezout_result">$$x = %s, y = %s$$ $$ gcd(a,b)=%s$$</string>
     <string name="null_bezout_parameter">The integers must be not null.</string>
     <string name="bezout_initial_step">$$\\begin{cases} r_{%d} = %s \\\\ s_{%d} = %s \\\\ t_{%d} = %s \\end{cases}$$</string>
     <string name="bezout_step">$$\\begin{cases} r_{%d} = r_{%d} - %s \\cdot r_{%d} = %s \\\\ s_{%d} = s_{%d} - %s \\cdot s_{%d} = %s \\\\ t_{%d} = t_{%d} - %s \\cdot t_{%d} = %s  \\end{cases}$$</string>
     <string name="bezout_result_label">Result: </string>
     <string name="bezout_step_label">Steps: </string>
+
+    <!-- Discrete logarithm fragment string resources -->
+    <string name="dl_p_hint">Insert integer p</string>
+    <string name="dl_alpha_hint">Insert alpha</string>
+    <string name="dl_gamma_hint">Insert gamma</string>
+    <string name="dl_not_prime_integer">The inserted integer is not prime!</string>
+
 </resources>
