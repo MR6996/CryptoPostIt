@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/bezout_description"
-        android:hint="@string/a_edit_text"
+        android:hint="@string/bezout_a_edit_text"
         android:imeOptions="actionNext"
         android:nextFocusDown="@id/bezout_b_edit_text" />
 
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@id/bezout_a_edit_text"
-        android:hint="@string/b_edit_text"
+        android:hint="@string/bezout_b_edit_text"
         android:imeOptions="actionDone"
         android:nextFocusDown="@id/bezout_calculate_button"
         android:nextFocusUp="@id/bezout_a_edit_text" />

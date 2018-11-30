@@ -20,8 +20,8 @@
     <string name="calculate_button">Calculate</string>
 
     <!-- Bezout fragment string resources -->
-    <string name="a_edit_text">Insert integer a</string>
-    <string name="b_edit_text">Insert integer b</string>
+    <string name="bezout_a_edit_text">Insert integer a</string>
+    <string name="bezout_b_edit_text">Insert integer b</string>
     <string name="bezout_result">$$x = %s, y = %s$$ $$ gcd(a,b)=%s$$</string>
     <string name="null_bezout_parameter">The integers must be not null.</string>
     <string name="bezout_initial_step">$$\\begin{cases} r_{%d} = %s \\\\ s_{%d} = %s \\\\ t_{%d} = %s \\end{cases}$$</string>

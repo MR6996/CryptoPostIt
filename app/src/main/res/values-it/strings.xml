@@ -8,8 +8,8 @@
     <string name="about_view">Info</string>
     <string name="bezout_description">Dati due interi \\(a\\neq 0\\) e \\(b\\neq 0\\), trova gli interi \\(x\\) e \\(y\\), tale che $$ MCD(a, b) = a\\cdot x + b\\cdot y$$</string>
     <string name="calculate_button">Calcola</string>
-    <string name="a_edit_text">Inserisci l\'intero a</string>
-    <string name="b_edit_text">Inserisci l\'intero b</string>
+    <string name="bezout_a_edit_text">Inserisci l\'intero a</string>
+    <string name="bezout_b_edit_text">Inserisci l\'intero b</string>
     <string name="error_dialog_title">Errore</string>
     <string name="empty_edit_text">Alcuni campi di testo sono vuoti!</string>
     <string name="null_bezout_parameter">Gli interi devono essere non nulli.</string>
