@@ -16,8 +16,6 @@ import android.widget.EditText;
 import android.widget.ToggleButton;
 
 import java.math.BigInteger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import cryptography.Number;
 import cryptography.Point;
@@ -73,22 +71,22 @@ public class DiscreteLogFragment extends Fragment {
         }
 
         private void calculatePointLocarithm(String alphaText, String gammaText) {
-            Pattern integerPattern = Pattern.compile("[0-9]+");
-            Matcher alphaMatcher = integerPattern.matcher(alphaText);
-            Matcher gammaMatcher = integerPattern.matcher(gammaText);
-
-            if (alphaMatcher.groupCount() < 2 || gammaMatcher.groupCount() < 2) {
+            String format = "\\([0-9]+;[0-9]+\\)";
+            if (!alphaText.matches(format) || !gammaText.matches(format)) {
                 mActivity.showErrorDialog("Invalid syntax for points.");
                 return;
             }
 
+            String[] alphaValues = alphaText.replaceAll("[\\(\\)]", "").split(";");
+            String[] gammaValues = gammaText.replaceAll("[\\(\\)]", "").split(";");
+
             Point alpha = new Point(
-                    new BigInteger(alphaMatcher.group(1)),
-                    new BigInteger(alphaMatcher.group(2))
+                    new BigInteger(alphaValues[0]),
+                    new BigInteger(alphaValues[1])
             );
             Point gamma = new Point(
-                    new BigInteger(gammaMatcher.group(1)),
-                    new BigInteger(gammaMatcher.group(2))
+                    new BigInteger(gammaValues[0]),
+                    new BigInteger(gammaValues[1])
             );
 
             mResultView.setText("To implement point discrete log.");
