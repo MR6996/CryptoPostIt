@@ -46,12 +46,4 @@
         android:layout_below="@id/bezout_b_edit_text"
         android:text="@string/calculate_button" />
 
-    <io.github.kexanie.library.MathView
-        android:id="@+id/bezout_result_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/bezout_calculate_button"
-        android:clipChildren="true"
-        app:engine="KaTeX" />
-
 </RelativeLayout>

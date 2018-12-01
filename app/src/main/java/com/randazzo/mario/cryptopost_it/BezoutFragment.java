@@ -1,11 +1,9 @@
 package com.randazzo.mario.cryptopost_it;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +19,7 @@ import cryptography.Utils;
 import io.github.kexanie.library.MathView;
 
 
-public class BezoutFragment extends Fragment {
+public class BezoutFragment extends BaseFragment {
 
     private static final String TAG_A_EDIT_FIELD = "bezout_a_edit_field";
     private static final String TAG_B_EDIT_FIELD = "bezout_b_edit_field";
@@ -30,7 +28,6 @@ public class BezoutFragment extends Fragment {
     private MathView mResultView;
     private EditText mAEditText;
     private EditText mBEditText;
-    private MainActivity mActivity;
 
     public BezoutFragment() {
     }
@@ -38,10 +35,9 @@ public class BezoutFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View mainView = inflateLayouts(inflater, container, R.layout.fragment_bezout);
 
-        View mainView = inflater.inflate(R.layout.fragment_bezout, container, false);
-
-        mResultView = mainView.findViewById(R.id.bezout_result_view);
+        mResultView = mainView.findViewById(R.id.result_view);
         mAEditText = mainView.findViewById(R.id.bezout_a_edit_text);
         mBEditText = mainView.findViewById(R.id.bezout_b_edit_text);
 
@@ -123,11 +119,4 @@ public class BezoutFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof MainActivity)
-            this.mActivity = (MainActivity) context;
-        else throw new IllegalStateException("Fragment is not managed by MainActivity!");
-    }
 }

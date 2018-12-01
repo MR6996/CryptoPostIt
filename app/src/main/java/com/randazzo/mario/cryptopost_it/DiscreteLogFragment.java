@@ -1,10 +1,8 @@
 package com.randazzo.mario.cryptopost_it;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.InputType;
 import android.util.Log;
@@ -26,10 +24,9 @@ import cryptography.Utils;
 import io.github.kexanie.library.MathView;
 
 
-public class DiscreteLogFragment extends Fragment {
+public class DiscreteLogFragment extends BaseFragment {
 
     private ToggleButton mTypeToggle;
-    private MainActivity mActivity;
     private EditText mPEditText;
     private EditText mAlphaEditText;
     private EditText mGammaEditText;
@@ -142,12 +139,12 @@ public class DiscreteLogFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View mainView = inflater.inflate(R.layout.fragment_discrete_log, container, false);
+        View mainView = inflateLayouts(inflater, container, R.layout.fragment_discrete_log);
 
         mPEditText = mainView.findViewById(R.id.dl_p_edit_text);
         mAlphaEditText = mainView.findViewById(R.id.dl_alpha_edit_text);
         mGammaEditText = mainView.findViewById(R.id.dl_gamma_edit_text);
-        mResultView = mainView.findViewById(R.id.dl_result_view);
+        mResultView = mainView.findViewById(R.id.result_view);
 
         mTypeToggle = mainView.findViewById(R.id.dl_type_toggle);
         mTypeToggle.setOnCheckedChangeListener(mToggleChengeListener);
@@ -156,13 +153,5 @@ public class DiscreteLogFragment extends Fragment {
         calculateButton.setOnClickListener(mCalculateListener);
 
         return mainView;
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof MainActivity)
-            this.mActivity = (MainActivity) context;
-        else throw new IllegalStateException("Fragment is not managed by MainActivity!");
     }
 }

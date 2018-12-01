@@ -66,13 +66,4 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/dl_gamma_edit_text"
         android:text="@string/calculate_button" />
-
-    <io.github.kexanie.library.MathView
-        android:id="@+id/dl_result_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/dl_calculate_button"
-        android:clipChildren="true"
-        app:engine="KaTeX" />
-
 </RelativeLayout>
