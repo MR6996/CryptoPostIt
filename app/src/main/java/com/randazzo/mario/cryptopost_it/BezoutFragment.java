@@ -70,13 +70,13 @@ public class BezoutFragment extends Fragment {
                 List<BezoutStep> steps = Utils.bezoutSteps(a, b);
                 BezoutStep lastStep = steps.get(steps.size() - 1);
 
-                StringBuilder resultBuilder = new StringBuilder(getString(R.string.bezout_result_label));
+                StringBuilder resultBuilder = new StringBuilder(getString(R.string.result_label));
                 resultBuilder.append(String.format(
                         getString(R.string.bezout_result),
                         lastStep.getT(), lastStep.getS(), lastStep.getR()
                 ));
 
-                resultBuilder.append(getString(R.string.bezout_step_label));
+                resultBuilder.append(getString(R.string.step_label));
                 for (int i = 0; i < steps.size(); i++) {
                     BezoutStep s = steps.get(i);
                     if (s.isInitialStep())

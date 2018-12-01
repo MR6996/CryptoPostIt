@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +17,12 @@ import android.widget.EditText;
 import android.widget.ToggleButton;
 
 import java.math.BigInteger;
+import java.util.List;
 
+import cryptography.Groupable;
 import cryptography.Number;
 import cryptography.Point;
+import cryptography.Utils;
 import io.github.kexanie.library.MathView;
 
 
@@ -52,12 +56,12 @@ public class DiscreteLogFragment extends Fragment {
             }
 
             if (mTypeToggle.isChecked())
-                calculateIntegerLogarithm(alphaText.toString(), gammaText.toString());
+                calculateIntegerLogarithm(alphaText.toString(), gammaText.toString(), p);
             else
-                calculatePointLocarithm(alphaText.toString(), gammaText.toString());
+                calculatePointLocarithm(alphaText.toString(), gammaText.toString(), p);
         }
 
-        private void calculateIntegerLogarithm(String alphaText, String gammaText) {
+        private void calculateIntegerLogarithm(String alphaText, String gammaText, BigInteger p) {
             Number alpha = new Number(new BigInteger(alphaText));
             Number gamma = new Number(new BigInteger(gammaText));
 
@@ -67,10 +71,10 @@ public class DiscreteLogFragment extends Fragment {
                 return;
             }
 
-            mResultView.setText("To implement integer discrete log.");
+            calculateResult(alpha, gamma, p);
         }
 
-        private void calculatePointLocarithm(String alphaText, String gammaText) {
+        private void calculatePointLocarithm(String alphaText, String gammaText, BigInteger p) {
             String format = "\\([0-9]+;[0-9]+\\)";
             if (!alphaText.matches(format) || !gammaText.matches(format)) {
                 mActivity.showErrorDialog("Invalid syntax for points.");
@@ -89,7 +93,29 @@ public class DiscreteLogFragment extends Fragment {
                     new BigInteger(gammaValues[1])
             );
 
-            mResultView.setText("To implement point discrete log.");
+            calculateResult(alpha, gamma, p);
+        }
+
+        private <T extends Groupable<T>> void calculateResult(T alpha, T gamma, BigInteger p) {
+            try {
+                List<T> steps = Utils.discreteLogSteps(alpha, gamma, p);
+
+
+                StringBuilder resultBuilder = new StringBuilder(getString(R.string.result_label));
+                resultBuilder.append(String.format(getString(R.string.dl_result), steps.size() + 1));
+
+                resultBuilder.append(getString(R.string.step_label));
+                for (int i = 0; i < steps.size(); i++)
+                    resultBuilder.append(String.format(
+                            getString(R.string.dl_step), i + 2, steps.get(i).toString()
+                    ));
+
+                mResultView.setText(resultBuilder.toString());
+            } catch (ArithmeticException e) {
+                mActivity.showErrorDialog(getString(R.string.dl_max_attempts_reached));
+            } catch (Exception e) {
+                Log.i("asdasd", e.getMessage());
+            }
         }
     };
 

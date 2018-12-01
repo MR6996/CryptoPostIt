@@ -13,21 +13,22 @@
     <string name="dl_introduction">Given \\(\\alpha, \\gamma \\in G\\), find \\(a\\) such that: $$\\alpha = \\gamma^{a}$$</string>
 
     <!-- Common application string resources -->
-    <string name="error_dialog_title">Error</string>
+    <string name="error_dialog_title">Errore</string>
     <string name="empty_edit_text">Some text field are void!</string>
     <string name="calculate_button">Calculate</string>
+    <string name="result_label">Risultato: </string>
+    <string name="step_label">Passi: </string>
 
     <!-- Bezout fragment string resources -->
     <string name="bezout_a_edit_text">Inserisci l\'intero a</string>
     <string name="bezout_b_edit_text">Inserisci l\'intero b</string>
     <string name="bezout_result">$$x = %s, y = %s$$ $$ MCD(a,b)=%s$$</string>
     <string name="null_bezout_parameter">Gli interi inseriti non devono essere nulli.</string>
-    <string name="bezout_result_label">Risultato: </string>
-    <string name="bezout_step_label">Passi: </string>
 
     <!-- Discrete logarithm fragment string resources -->
     <string name="dl_p_hint">Inserisci l\'intero p</string>
     <string name="dl_alpha_hint">Inserisci alfa</string>
     <string name="dl_gamma_hint">Inserisci gamma</string>
     <string name="dl_not_prime_integer">L\'intero p inserito non è primo.</string>
+    <string name="dl_max_attempts_reached">Non è possibile calcolare il logaritmo discreto per questi parametri. Il numero massimo di tentativi è stato raggiunto! Probabilmente i dati inseriti non sono validi!</string>
 </resources>
