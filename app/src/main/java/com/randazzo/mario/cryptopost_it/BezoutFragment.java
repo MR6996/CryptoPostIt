@@ -16,7 +16,6 @@ import java.util.List;
 
 import cryptography.BezoutStep;
 import cryptography.Utils;
-import io.github.kexanie.library.MathView;
 
 
 public class BezoutFragment extends BaseFragment {
@@ -25,7 +24,6 @@ public class BezoutFragment extends BaseFragment {
     private static final String TAG_B_EDIT_FIELD = "bezout_b_edit_field";
     private static final String TAG_RESULT = "bezout_result_math_view";
 
-    private MathView mResultView;
     private EditText mAEditText;
     private EditText mBEditText;
 
@@ -37,7 +35,6 @@ public class BezoutFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         View mainView = inflateLayouts(inflater, container, R.layout.fragment_bezout);
 
-        mResultView = mainView.findViewById(R.id.result_view);
         mAEditText = mainView.findViewById(R.id.bezout_a_edit_text);
         mBEditText = mainView.findViewById(R.id.bezout_b_edit_text);
 

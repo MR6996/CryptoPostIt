@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.Editable;
 import android.text.InputType;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,6 @@ import cryptography.Groupable;
 import cryptography.Number;
 import cryptography.Point;
 import cryptography.Utils;
-import io.github.kexanie.library.MathView;
 
 
 public class DiscreteLogFragment extends BaseFragment {
@@ -30,7 +28,6 @@ public class DiscreteLogFragment extends BaseFragment {
     private EditText mPEditText;
     private EditText mAlphaEditText;
     private EditText mGammaEditText;
-    private MathView mResultView;
 
     private View.OnClickListener mCalculateListener = new View.OnClickListener() {
         @Override
@@ -110,8 +107,6 @@ public class DiscreteLogFragment extends BaseFragment {
                 mResultView.setText(resultBuilder.toString());
             } catch (ArithmeticException e) {
                 mActivity.showErrorDialog(getString(R.string.dl_max_attempts_reached));
-            } catch (Exception e) {
-                Log.i("asdasd", e.getMessage());
             }
         }
     };
@@ -144,7 +139,6 @@ public class DiscreteLogFragment extends BaseFragment {
         mPEditText = mainView.findViewById(R.id.dl_p_edit_text);
         mAlphaEditText = mainView.findViewById(R.id.dl_alpha_edit_text);
         mGammaEditText = mainView.findViewById(R.id.dl_gamma_edit_text);
-        mResultView = mainView.findViewById(R.id.result_view);
 
         mTypeToggle = mainView.findViewById(R.id.dl_type_toggle);
         mTypeToggle.setOnCheckedChangeListener(mToggleChengeListener);

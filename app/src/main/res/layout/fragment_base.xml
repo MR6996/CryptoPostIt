@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".DiscreteLogFragment">
 
     <ViewStub
@@ -11,12 +12,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <io.github.kexanie.library.MathView
-        android:id="@+id/result_view"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/form_layout"
-        android:clipChildren="true"
-        app:engine="KaTeX" />
+        android:layout_height="match_parent">
 
-</RelativeLayout>
+        <io.github.kexanie.library.MathView
+            android:id="@+id/result_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:engine="KaTeX" />
+
+        <ProgressBar
+            android:id="@+id/loading_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</LinearLayout>

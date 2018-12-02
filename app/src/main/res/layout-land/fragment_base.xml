@@ -20,11 +20,23 @@
     </ScrollView>
 
 
-    <io.github.kexanie.library.MathView
-        android:id="@+id/result_view"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        app:engine="KaTeX" />
+        android:layout_weight="1">
+
+        <io.github.kexanie.library.MathView
+            android:id="@+id/result_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:engine="KaTeX" />
+
+        <ProgressBar
+            android:id="@+id/loading_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+    </FrameLayout>
 
 </LinearLayout>
