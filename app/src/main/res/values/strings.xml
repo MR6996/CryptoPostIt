@@ -15,7 +15,8 @@
 
     <!-- Common application string resources -->
     <string name="error_dialog_title">Error</string>
-    <string name="error_dialog_ok" translatable="false">OK</string>
+    <string name="warning_dialog_title">Warning!</string>
+    <string name="dialog_ok" translatable="false">OK</string>
     <string name="empty_edit_text">Some text field are void!</string>
     <string name="calculate_button">Calculate</string>
     <string name="result_label">Result: </string>
@@ -37,5 +38,6 @@
     <string name="dl_result" translatable="false">$$a = %d$$</string>
     <string name="dl_step" translatable="false">$$ %d \\cdot \\gamma = %s$$</string>
     <string name="dl_max_attempts_reached">It\'s not possible to calculate discrete logarithm for this parameters. Max attempt number has been reached! Probably inserted data are not valid!</string>
+
 
 </resources>

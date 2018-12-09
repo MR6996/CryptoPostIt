@@ -190,11 +190,11 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    protected void showErrorDialog(String message) {
+    protected void showOkDialog(String title, String message) {
         new AlertDialog.Builder(this)
-                .setTitle(getString(R.string.error_dialog_title))
+                .setTitle(title)
                 .setMessage(message)
-                .setPositiveButton(getString(R.string.error_dialog_ok), new DialogInterface.OnClickListener() {
+                .setPositiveButton(getString(R.string.dialog_ok), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -202,6 +202,14 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .setCancelable(false)
                 .show();
+    }
+
+    protected void showErrorDialog(String message) {
+        showOkDialog(getString(R.string.error_dialog_title), message);
+    }
+
+    protected void showWarningDialog(String message) {
+        showOkDialog(getString(R.string.warning_dialog_title), message);
     }
 
     protected void hideSoftInput() {

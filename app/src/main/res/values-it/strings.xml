@@ -14,6 +14,7 @@
 
     <!-- Common application string resources -->
     <string name="error_dialog_title">Errore</string>
+    <string name="warning_dialog_title">Attenzione!</string>
     <string name="empty_edit_text">Some text field are void!</string>
     <string name="calculate_button">Calculate</string>
     <string name="result_label">Risultato: </string>
