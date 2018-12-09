@@ -3,6 +3,7 @@ package com.randazzo.mario.cryptopost_it;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -23,6 +24,11 @@ import cryptography.Utils;
 
 
 public class DiscreteLogFragment extends BaseFragment {
+
+    private static final String TAG_TYPE_TOGGLE = "discrete_log_type_toggle";
+    private static final String TAG_P_EDIT_FIELD = "discrete_log_p_edit_field";
+    private static final String TAG_ALPHA_EDIT_FIELD = "discrete_log_alpha_edit_field";
+    private static final String TAG_GAMMA_EDIT_FIELD = "discrete_log_gamma_edit_field";
 
     private ToggleButton mTypeToggle;
     private EditText mPEditText;
@@ -147,5 +153,25 @@ public class DiscreteLogFragment extends BaseFragment {
         calculateButton.setOnClickListener(mCalculateListener);
 
         return mainView;
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(TAG_TYPE_TOGGLE, mTypeToggle.isChecked());
+        outState.putString(TAG_P_EDIT_FIELD, mPEditText.getText().toString());
+        outState.putString(TAG_ALPHA_EDIT_FIELD, mAlphaEditText.getText().toString());
+        outState.putString(TAG_GAMMA_EDIT_FIELD, mGammaEditText.getText().toString());
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        if (savedInstanceState != null) {
+            mTypeToggle.setChecked(savedInstanceState.getBoolean(TAG_TYPE_TOGGLE));
+            mPEditText.setText(savedInstanceState.getString(TAG_P_EDIT_FIELD));
+            mAlphaEditText.setText(savedInstanceState.getString(TAG_ALPHA_EDIT_FIELD));
+            mGammaEditText.setText(savedInstanceState.getString(TAG_GAMMA_EDIT_FIELD));
+        }
     }
 }

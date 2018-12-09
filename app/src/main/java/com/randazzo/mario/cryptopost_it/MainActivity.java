@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * The last {@link MenuItem} id selected.
      */
-    private Integer mLastItemId = R.id.bezout;
+    private Integer mLastItemId;
 
     /**
      * Reference to app {@link Toolbar}
@@ -104,18 +104,6 @@ public class MainActivity extends AppCompatActivity {
             mLastItemId = item.getItemId();
             return true;
         }
-
-        /**
-         * Replace the current fragment with the fragment f.
-         *
-         * @param f a fragment to replace.
-         */
-        private void changeFragment(Fragment f) {
-            mFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.main_frame, f)
-                    .commit();
-        }
     };
 
     /**
@@ -166,9 +154,14 @@ public class MainActivity extends AppCompatActivity {
 
         if (savedInstanceState != null)
             mLastItemId = savedInstanceState.getInt(LAST_ID_TAG);
+        else {
+            mLastItemId = R.id.bezout;
+            changeFragment(mBezoutFragment);
+        }
 
         navigationView.setCheckedItem(mLastItemId);
-        mSelectionListener.onNavigationItemSelected(navigationView.getMenu().findItem(mLastItemId));
+        MenuItem item = (navigationView.getMenu().findItem(mLastItemId));
+        mAppToolbar.setTitle(item.getTitle());
     }
 
     @Override
@@ -188,6 +181,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Replace the current fragment with the fragment f.
+     *
+     * @param f a fragment to replace.
+     */
+    private void changeFragment(Fragment f) {
+        mFragmentManager
+                .beginTransaction()
+                .replace(R.id.main_frame, f)
+                .commit();
     }
 
     protected void showOkDialog(String title, String message) {

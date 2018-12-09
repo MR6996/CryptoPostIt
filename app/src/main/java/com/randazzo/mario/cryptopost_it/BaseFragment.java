@@ -3,7 +3,9 @@ package com.randazzo.mario.cryptopost_it;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,8 @@ import io.github.kexanie.library.MathView;
 
 public abstract class BaseFragment extends Fragment {
 
+    private static final String TAG_RESULT = "base_fragment_result_math_view";
+
     protected MainActivity mActivity;
     protected MathView mResultView;
     protected ProgressBar mLoadingBar;
@@ -28,6 +32,22 @@ public abstract class BaseFragment extends Fragment {
         if (context instanceof MainActivity)
             this.mActivity = (MainActivity) context;
         else throw new IllegalStateException("Fragment is not managed by MainActivity!");
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(TAG_RESULT, mResultView.getText());
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        if (savedInstanceState != null) {
+            String resultText = savedInstanceState.getString(TAG_RESULT);
+            if (resultText != null)
+                mResultView.setText(resultText);
+        }
     }
 
     public View inflateLayouts(@NonNull LayoutInflater inflater, ViewGroup container, int formLayoutRes) {

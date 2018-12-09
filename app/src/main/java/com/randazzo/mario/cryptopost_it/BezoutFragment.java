@@ -22,7 +22,6 @@ public class BezoutFragment extends BaseFragment {
 
     private static final String TAG_A_EDIT_FIELD = "bezout_a_edit_field";
     private static final String TAG_B_EDIT_FIELD = "bezout_b_edit_field";
-    private static final String TAG_RESULT = "bezout_result_math_view";
 
     private EditText mAEditText;
     private EditText mBEditText;
@@ -101,7 +100,6 @@ public class BezoutFragment extends BaseFragment {
         super.onSaveInstanceState(outState);
         outState.putString(TAG_A_EDIT_FIELD, mAEditText.getText().toString());
         outState.putString(TAG_B_EDIT_FIELD, mBEditText.getText().toString());
-        outState.putString(TAG_RESULT, mResultView.getText());
     }
 
     @Override
@@ -110,10 +108,6 @@ public class BezoutFragment extends BaseFragment {
         if (savedInstanceState != null) {
             mAEditText.setText(savedInstanceState.getString(TAG_A_EDIT_FIELD));
             mBEditText.setText(savedInstanceState.getString(TAG_B_EDIT_FIELD));
-
-            String resultText = savedInstanceState.getString(TAG_RESULT);
-            if (resultText != null)
-                mResultView.setText(resultText);
         }
     }
 
