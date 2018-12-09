@@ -27,6 +27,59 @@ public class BezoutFragment extends BaseFragment {
     private EditText mAEditText;
     private EditText mBEditText;
 
+    private View.OnClickListener mCalculateListner = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            mActivity.hideSoftInput();
+
+            Editable aText = mAEditText.getText();
+            Editable bText = mBEditText.getText();
+
+            if (aText.length() == 0 || bText.length() == 0) {
+                mActivity.showErrorDialog(getString(R.string.empty_edit_text));
+                return;
+            }
+
+            BigInteger a = new BigInteger(aText.toString());
+            BigInteger b = new BigInteger(bText.toString());
+
+            if (a.equals(BigInteger.ZERO) || b.equals(BigInteger.ZERO)) {
+                mActivity.showErrorDialog(getString(R.string.null_bezout_parameter));
+                return;
+            }
+
+            List<BezoutStep> steps = Utils.bezoutSteps(a, b);
+            BezoutStep lastStep = steps.get(steps.size() - 1);
+
+            StringBuilder resultBuilder = new StringBuilder(getString(R.string.result_label));
+            resultBuilder.append(String.format(
+                    getString(R.string.bezout_result),
+                    lastStep.getT(), lastStep.getS(), lastStep.getR()
+            ));
+
+            resultBuilder.append(getString(R.string.step_label));
+            for (int i = 0; i < steps.size(); i++) {
+                BezoutStep s = steps.get(i);
+                if (s.isInitialStep())
+                    resultBuilder.append(String.format(
+                            getString(R.string.bezout_initial_step),
+                            i, s.getR(), i, s.getS(), i, s.getT()
+                    ));
+                else
+                    //r_%d = r_%d - %s \\cdot r_%d = %s
+                    resultBuilder.append(String.format(
+                            getString(R.string.bezout_step),
+                            i, i - 2, s.getQ(), i - 1, s.getR(),
+                            i, i - 2, s.getQ(), i - 1, s.getS(),
+                            i, i - 2, s.getQ(), i - 1, s.getT()
+                    ));
+
+            }
+
+            mResultView.setText(resultBuilder.toString());
+        }
+    };
+
     public BezoutFragment() {
     }
 
@@ -39,59 +92,7 @@ public class BezoutFragment extends BaseFragment {
         mBEditText = mainView.findViewById(R.id.bezout_b_edit_text);
 
         Button calculateButton = mainView.findViewById(R.id.bezout_calculate_button);
-        calculateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mActivity.hideSoftInput();
-
-                Editable aText = mAEditText.getText();
-                Editable bText = mBEditText.getText();
-
-                if (aText.length() == 0 || bText.length() == 0) {
-                    mActivity.showErrorDialog(getString(R.string.empty_edit_text));
-                    return;
-                }
-
-                BigInteger a = new BigInteger(aText.toString());
-                BigInteger b = new BigInteger(bText.toString());
-
-                if (a.equals(BigInteger.ZERO) || b.equals(BigInteger.ZERO)) {
-                    mActivity.showErrorDialog(getString(R.string.null_bezout_parameter));
-                    return;
-                }
-
-                List<BezoutStep> steps = Utils.bezoutSteps(a, b);
-                BezoutStep lastStep = steps.get(steps.size() - 1);
-
-                StringBuilder resultBuilder = new StringBuilder(getString(R.string.result_label));
-                resultBuilder.append(String.format(
-                        getString(R.string.bezout_result),
-                        lastStep.getT(), lastStep.getS(), lastStep.getR()
-                ));
-
-                resultBuilder.append(getString(R.string.step_label));
-                for (int i = 0; i < steps.size(); i++) {
-                    BezoutStep s = steps.get(i);
-                    if (s.isInitialStep())
-                        resultBuilder.append(String.format(
-                                getString(R.string.bezout_initial_step),
-                                i, s.getR(), i, s.getS(), i, s.getT()
-                        ));
-                    else
-                        //r_%d = r_%d - %s \\cdot r_%d = %s
-                        resultBuilder.append(String.format(
-                                getString(R.string.bezout_step),
-                                i, i - 2, s.getQ(), i - 1, s.getR(),
-                                i, i - 2, s.getQ(), i - 1, s.getS(),
-                                i, i - 2, s.getQ(), i - 1, s.getT()
-                        ));
-
-                }
-
-                String resultText = resultBuilder.toString();
-                mResultView.setText(resultText);
-            }
-        });
+        calculateButton.setOnClickListener(mCalculateListner);
         return mainView;
     }
 
