@@ -23,7 +23,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.android.support:design:27.1.1'
-    implementation 'com.github.MR6996:crypto:f26a661'
+    implementation 'com.github.MR6996:crypto:5dbd2d1'
     implementation 'io.github.kexanie.library:MathView:0.0.5'
     implementation 'com.android.support:support-v4:27.1.1'
     testImplementation 'junit:junit:4.12'

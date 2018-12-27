@@ -1,15 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RSAFragment">
 
+    <io.github.kexanie.library.MathView
+        android:id="@+id/rsa_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        app:engine="KaTeX"
+        app:text="@string/rsa_description" />
+
+    <EditText
+        android:id="@+id/rsa_n_edit_text"
+        style="@style/CustomEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rsa_description"
+        android:layout_alignParentStart="true"
+        android:hint="@string/rsa_n_edit_text" />
+
+    <EditText
+        android:id="@+id/rsa_e_edit_text"
+        style="@style/CustomEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rsa_n_edit_text"
+        android:layout_alignParentStart="true"
+        android:hint="@string/rsa_e_edit_text" />
+
+    <EditText
+        android:id="@+id/rsa_c_edit_text"
+        style="@style/CustomEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rsa_e_edit_text"
+        android:layout_alignParentStart="true"
+        android:hint="@string/rsa_c_edit_text" />
 
     <Button
+        android:id="@+id/rsa_calculate_button"
         style="@style/CustomButton"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rsa_c_edit_text"
         android:text="@string/calculate_button" />
 
 </RelativeLayout>

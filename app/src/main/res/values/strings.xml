@@ -39,5 +39,12 @@
     <string name="dl_step" translatable="false">$$ %d \\cdot \\gamma = %s$$</string>
     <string name="dl_max_attempts_reached">It\'s not possible to calculate discrete logarithm for this parameters. Max attempt number has been reached! Probably inserted data are not valid!</string>
 
-
+    <!-- RSA fragment string resources -->
+    <string name="rsa_description">Given public key \\((n,e)\\), finds private key \\(d\\) and deciphers the message \\(c\\).</string>
+    <string name="rsa_n_edit_text">Insert integer n</string>
+    <string name="rsa_e_edit_text">Insert integer e</string>
+    <string name="rsa_c_edit_text">Insert cipher message</string>
+    <string name="rsa_n_prime_number">n is probable prime, check your data.</string>
+    <string name="rsa_null_public_key">e not be null.</string>
+    <string name="rsa_result">$$n = p \\cdot q = %s \\cdot %s$$ $$ \\lambda = mcm(%s, %s) = %s $$ $$d = %s$$ $$ c = %s$$</string>
 </resources>

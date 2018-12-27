@@ -32,4 +32,14 @@
     <string name="dl_gamma_hint">Inserisci gamma</string>
     <string name="dl_not_prime_integer">L\'intero p inserito non è primo.</string>
     <string name="dl_max_attempts_reached">Non è possibile calcolare il logaritmo discreto per questi parametri. Il numero massimo di tentativi è stato raggiunto! Probabilmente i dati inseriti non sono validi!</string>
+
+
+    <!-- RSA fragment string resources -->
+    <string name="rsa_description">Data la chiave pubblica \\((n,e)\\), trova la chiave privata \\(d\\) e decifra il messaggio \\(c\\).</string>
+    <string name="rsa_n_edit_text">Inserisci l\'intero n</string>
+    <string name="rsa_e_edit_text">Inserisci l\'intero e</string>
+    <string name="rsa_c_edit_text">Inserisci il messaggio cifrato.</string>
+    <string name="rsa_n_prime_number">n is probable prime, check your data.</string>
+    <string name="rsa_null_public_key">e not be null.</string>
+    <string name="rsa_result">$$n = p \\cdot q = %s \\cdot %s$$ $$ \\lambda = mcm(%s, %s) = %s $$ $$d = %s$$ $$ c = %s$$</string>
 </resources>
