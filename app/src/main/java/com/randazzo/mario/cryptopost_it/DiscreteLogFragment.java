@@ -81,8 +81,8 @@ public class DiscreteLogFragment extends BaseFragment {
                 return;
             }
 
-            String[] alphaValues = alphaText.replaceAll("[\\(\\)]", "").split(";");
-            String[] gammaValues = gammaText.replaceAll("[\\(\\)]", "").split(";");
+            String[] alphaValues = alphaText.replaceAll("[()]", "").split(";");
+            String[] gammaValues = gammaText.replaceAll("[()]", "").split(";");
 
             Point alpha = new Point(
                     new BigInteger(alphaValues[0]),

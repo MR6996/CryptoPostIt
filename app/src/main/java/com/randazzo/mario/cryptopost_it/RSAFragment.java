@@ -54,17 +54,15 @@ public class RSAFragment extends BaseFragment {
                 BigInteger q = hacker.getQ();
                 BigInteger m = hacker.decrypt(c);
 
-                StringBuilder resultBuilder = new StringBuilder(getString(R.string.result_label));
-                resultBuilder.append(String.format(
+                String resultBuilder = getString(R.string.result_label) + String.format(
                         getString(R.string.rsa_result),
                         p.toString(), q.toString(),
                         p.subtract(BigInteger.ONE).toString(), q.subtract(BigInteger.ONE).toString(),
                         hacker.getLambda().toString(),
                         hacker.getPrivateKey(),
                         m
-                ));
-
-                mResultView.setText(resultBuilder.toString());
+                );
+                mResultView.setText(resultBuilder);
             } catch (ArithmeticException ex) {
                 mActivity.showErrorDialog("Invalid data!");
             }

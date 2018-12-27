@@ -41,5 +41,14 @@
     <string name="rsa_c_edit_text">Inserisci il messaggio cifrato.</string>
     <string name="rsa_n_prime_number">n is probable prime, check your data.</string>
     <string name="rsa_null_public_key">e not be null.</string>
-    <string name="rsa_result">$$n = p \\cdot q = %s \\cdot %s$$ $$ \\lambda = mcm(%s, %s) = %s $$ $$d = %s$$ $$ c = %s$$</string>
+    <string name="rsa_result">$$n = p \\cdot q = %s \\cdot %s$$ $$ \\lambda = mcm(%s, %s) = %s $$ $$d = %s$$ $$ m = %s$$</string>
+
+
+    <!-- RSA fragment string resources -->
+    <string name="el_gamal_alpha_hint">Inserisci alfa</string>
+    <string name="el_gamal_beta_hint">Inserisci beta</string>
+    <string name="el_gamal_c_hint">Insert il messaggio cifrato</string>
+    <string name="el_gamal_gamma_hint">Inserisci gamma</string>
+    <string name="el_gamal_p_hint">Inserisci l\'intero p</string>
+    <string name="el_gamal_introduction">Elgamal intro</string>
 </resources>
