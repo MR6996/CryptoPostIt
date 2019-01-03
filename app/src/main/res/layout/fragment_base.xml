@@ -7,10 +7,15 @@
     android:orientation="vertical"
     tools:context=".DiscreteLogFragment">
 
-    <ViewStub
-        android:id="@+id/form_layout"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+
+        <ViewStub
+            android:id="@+id/form_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
 
     <FrameLayout
         android:layout_width="match_parent"
