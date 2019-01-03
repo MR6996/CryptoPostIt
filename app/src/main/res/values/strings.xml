@@ -9,9 +9,6 @@
     <string name="settings_view">Settings</string>
     <string name="about_view">About</string>
 
-    <!-- Introduction text for single fragment -->
-    <string name="bezout_description">Given two integers \\(a\\neq 0\\) and \\(b\\neq 0\\), finds integers \\(x\\) and \\(y\\), such that $$ gcd(a, b) = a\\cdot x + b\\cdot y$$</string>
-    <string name="dl_introduction">Given \\(\\alpha, \\gamma \\in G\\), find \\(a\\) such that: $$\\alpha = \\gamma^{a}$$</string>
 
     <!-- Common application string resources -->
     <string name="error_dialog_title">Error</string>
@@ -23,6 +20,7 @@
     <string name="step_label">Steps: </string>
 
     <!-- Bezout fragment string resources -->
+    <string name="bezout_description">Given two integers \\(a\\neq 0\\) and \\(b\\neq 0\\), finds integers \\(x\\) and \\(y\\), such that $$ gcd(a, b) = a\\cdot x + b\\cdot y$$</string>
     <string name="bezout_a_edit_text">Insert integer a</string>
     <string name="bezout_b_edit_text">Insert integer b</string>
     <string name="bezout_result">$$x = %s, y = %s$$ $$ gcd(a,b)=%s$$</string>
@@ -31,6 +29,7 @@
     <string name="bezout_step" translatable="false">$$\\begin{cases} r_{%d} = r_{%d} - %s \\cdot r_{%d} = %s \\\\ s_{%d} = s_{%d} - %s \\cdot s_{%d} = %s \\\\ t_{%d} = t_{%d} - %s \\cdot t_{%d} = %s  \\end{cases}$$</string>
 
     <!-- Discrete logarithm fragment string resources -->
+    <string name="dl_introduction">Given \\(\\alpha, \\gamma \\in G\\), find \\(a\\) such that: $$\\alpha = \\gamma^{a}$$</string>
     <string name="dl_p_hint">Insert integer p</string>
     <string name="dl_alpha_hint">Insert alpha</string>
     <string name="dl_gamma_hint">Insert gamma</string>
@@ -54,7 +53,7 @@
     <string name="el_gamal_c_hint">Insert ciphered message</string>
     <string name="el_gamal_gamma_hint">Insert gamma</string>
     <string name="el_gamal_p_hint">Insert integer p</string>
-    <string name="el_gamal_introduction">Elgamal intro</string>
+    <string name="el_gamal_introduction">Given public keys \\((\\alpha, \\gamma)\\) and \\((\\beta, \\gamma)\\), calculates \\(K = a\\cdot \\beta = b\\cdot \\alpha\\) such that \\(\\alpha = a\\cdot \\gamma\\) and \\(\\beta = b\\cdot \\gamma\\). Given c, it also calculates \\(m = c \\cdot K^{-1}\\)</string>
     <string name="el_gamal_result" translatable="false">$$a = %s$$  $$b =  %s$$ $$k = %s$$ $$m = %s$$</string>
 
 

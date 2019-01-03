@@ -3,6 +3,7 @@ package com.randazzo.mario.cryptopost_it;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,10 @@ import cryptography.RSAHacker;
 
 
 public class RSAFragment extends BaseFragment {
+
+    private static final String TAG_N_EDIT_FIELD = "RSA_n_edit_field";
+    private static final String TAG_E_EDIT_FIELD = "RSA_e_edit_field";
+    private static final String TAG_C_EDIT_FIELD = "RSA_c_edit_field";
 
     private EditText mNEditText;
     private EditText mEEditText;
@@ -87,4 +92,21 @@ public class RSAFragment extends BaseFragment {
         return mainView;
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(TAG_N_EDIT_FIELD, mNEditText.getText().toString());
+        outState.putString(TAG_E_EDIT_FIELD, mEEditText.getText().toString());
+        outState.putString(TAG_C_EDIT_FIELD, mCEditText.getText().toString());
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        if (savedInstanceState != null) {
+            mNEditText.setText(savedInstanceState.getString(TAG_N_EDIT_FIELD));
+            mEEditText.setText(savedInstanceState.getString(TAG_E_EDIT_FIELD));
+            mCEditText.setText(savedInstanceState.getString(TAG_C_EDIT_FIELD));
+        }
+    }
 }

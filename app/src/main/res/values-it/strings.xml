@@ -50,5 +50,5 @@
     <string name="el_gamal_c_hint">Insert il messaggio cifrato</string>
     <string name="el_gamal_gamma_hint">Inserisci gamma</string>
     <string name="el_gamal_p_hint">Inserisci l\'intero p</string>
-    <string name="el_gamal_introduction">Elgamal intro</string>
+    <string name="el_gamal_introduction">Date le chiavi pubbliche \\((\\alpha, \\gamma)\\) e \\((\\beta, \\gamma)\\), calcola \\(K = a\\cdot \\beta = b\\cdot \\alpha\\) tale che \\(\\alpha = a\\cdot \\gamma\\) e \\(\\beta = b\\cdot \\gamma\\). Dato c, calcola anche \\(m = c \\cdot K^{-1}\\)</string>
 </resources>
